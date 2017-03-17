@@ -1,7 +1,16 @@
+3.times do |topic|
+  Topic.create!(
+    title: "Topic #{topic}"
+  )
+end
+
+puts "3 topics created"
+
 10.times do |blog|
   Blog.create!(
     title: Faker::Hipster.sentence,
-    body:  Faker::Lorem.paragraph
+    body:  Faker::Lorem.paragraph,
+    topic: Topic.last
   )
 end
 
@@ -19,11 +28,21 @@ puts "5 skills created"
 9.times do |portfolio_item|
   Portfolio.create!(
     title: "Portfolio item #{portfolio_item}",
-    subtitle: Faker::Company.catch_phrase,
+    subtitle: "Ruby on Rails",
     body: Faker::Lorem.paragraph,
     main_image: Faker::Placeholdit.image("600x400"),
     thumb_image: Faker::Placeholdit.image("350x200")
   )
 end
 
-puts "9 portfolio items created"
+1.times do |portfolio_item|
+  Portfolio.create!(
+    title: "Portfolio item #{portfolio_item}",
+    subtitle: "Angular",
+    body: Faker::Lorem.paragraph,
+    main_image: Faker::Placeholdit.image("600x400"),
+    thumb_image: Faker::Placeholdit.image("350x200")
+  )
+end
+
+puts "10 portfolio items created"
